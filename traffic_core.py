@@ -85,7 +85,15 @@ async def run_traffic(config, duration=None):
             status = await send_request(session, "GET", f"http://{target}/api/restaurant", None, headers)
 
         elif choice == "get_one":
-            rid = random.randint(1, 5) if not is_error else 9999
+            restaurant_id_list = ["esthers", "robatayaki", "tofuparadise", "bateaurouge", "khartoum",
+    "sallys", "saucy", "czechpoint", "speisewagen", "beijing",
+    "satay", "cancun", "curryup", "carthage", "burgerama",
+    "littlepigs", "littleprague", "kohlhaus", "dragon", "babythai",
+    "wholetamale", "bhangra", "taqueria", "pedros", "superwonton",
+    "naansequitur", "sakura", "shandong", "currygalore", "north",
+    "beans", "jeeves", "zardoz", "angular", "flavia",
+    "luigis", "thick", "wheninrome", "pizza76"]
+            rid = restaurant_id_list[random.randint(0, len(restaurant_id_list)-1)] if not is_error else "invalid_restaurant"
             status = await send_request(session, "GET", f"http://{target}/api/restaurant/{rid}", None, headers)
 
         elif choice == "post_order":
